@@ -3,6 +3,7 @@ package view;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import main.Constant.EEvent;
 import control.CLoginControl;
 import entity.VLogin;
 import entity.VUser;
@@ -12,7 +13,7 @@ import exception.UserIDNotFoundException;
 
 public class CLoginView extends CView {
 	
-	public VUser login(Scanner scanner) {
+	public EEvent show(Scanner scanner) {
 		// input from keyboard using scanner
 		VLogin vLogin = new VLogin();
 
@@ -30,12 +31,16 @@ public class CLoginView extends CView {
 		vUser.setUserID(userId);
 		vUser.seteUsertype(EUserType.EProfessor);
 		System.out.println("로그인 성공");
-		return vUser;
-	}
 
-	@Override
-	public int show(Scanner scanner) {
-		// TODO Auto-generated method stub
-		return 0;
+		EEvent selection;
+		
+		if (vUser.geteUsertype()==EUserType.EProfessor) {
+			selection = EEvent.eProfessor;
+		}
+		else {
+			selection = EEvent.eStudent;
+		}
+		
+		return selection;
 	}
 }

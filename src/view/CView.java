@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 
+import main.Constant.EEvent;
 import control.CControl;
 
 public abstract class CView {
@@ -10,5 +11,5 @@ public abstract class CView {
 	public CControl getControl() {return control;}
 	public void setControl(CControl control) {this.control = control;}
 	
-	public abstract int show(Scanner scanner);
+	public abstract EEvent show(Scanner scanner);
 }
