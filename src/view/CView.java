@@ -11,5 +11,5 @@ public abstract class CView {
 	public CControl getControl() {return control;}
 	public void setControl(CControl control) {this.control = control;}
 	
-	public abstract EEvent show(Scanner scanner);
+	public abstract EEvent show(Scanner scanner, String title);
 }

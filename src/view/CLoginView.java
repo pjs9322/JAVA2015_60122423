@@ -1,9 +1,12 @@
 package view;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import main.Constant.EEvent;
+import control.CControl;
 import control.CLoginControl;
 import entity.VLogin;
 import entity.VUser;
@@ -13,7 +16,11 @@ import exception.UserIDNotFoundException;
 
 public class CLoginView extends CView {
 	
-	public EEvent show(Scanner scanner) {
+	public CLoginView() {
+		this.setControl(new CLoginControl());
+	}
+	
+	public EEvent show(Scanner scanner, String title) {
 		// input from keyboard using scanner
 		VLogin vLogin = new VLogin();
 
@@ -25,20 +32,21 @@ public class CLoginView extends CView {
 		vLogin.setUserID("id5");		
 		vLogin.setPassword("pw5");
 		
-		VUser vUser = new VUser();;
-
-		vUser.setName(userId);
-		vUser.setUserID(userId);
-		vUser.seteUsertype(EUserType.EProfessor);
-		System.out.println("로그인 성공");
-
-		EEvent selection;
+		VUser vUser;
+		EEvent selection = null;
 		
-		if (vUser.geteUsertype()==EUserType.EProfessor) {
-			selection = EEvent.eProfessor;
-		}
-		else {
-			selection = EEvent.eStudent;
+		try {
+			vUser = ((CLoginControl) this.getControl()).login(vLogin);
+			System.out.println("로그인 성공");
+			if (vUser.geteUsertype()==EUserType.EProfessor) {
+				selection = EEvent.eProfessor;
+			}
+			else {
+				selection = EEvent.eStudent;
+			}
+		} catch (UserIDNotFoundException | PasswordNotMatchException | IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return selection;

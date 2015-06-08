@@ -2,19 +2,20 @@ package view;
 
 import java.util.Scanner;
 
+import main.Constant;
 import main.Constant.EEvent;
+import main.Constant.EMainView;
+import main.Constant.EStudentView;
 
 public class CMainView extends CView {
-
 	@Override
-	public EEvent show(Scanner scanner) {
+	public EEvent show(Scanner scanner, String title) {
 		// TODO Auto-generated method stub
-		System.out.println("[학사관리 시스템]");
-		System.out.println("1.로그임");
-		System.out.println("2.회원가입");
-		System.out.println("0.종료");
-		System.out.print("메뉴선택: ");
-
+		System.out.println("["+title+"]");
+		for (EMainView eView: EMainView.values()) {
+			System.out.println(eView.getEventID().ordinal() + "." + eView.getTitle());
+		}
+		System.out.print(Constant.MENUSELECTION+": ");
 		EEvent selection = EEvent.values()[scanner.nextInt()];
 		return selection;
 	}

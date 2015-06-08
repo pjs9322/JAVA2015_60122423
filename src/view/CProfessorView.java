@@ -7,7 +7,7 @@ import main.Constant.EEvent;
 public class CProfessorView extends CView {
 
 	@Override
-	public EEvent show(Scanner scanner) {
+	public EEvent show(Scanner scanner, String title) {
 		// TODO Auto-generated method stub
 		System.out.println("[교수화면]");
 		System.out.println("1.강좌개설");
