@@ -182,11 +182,4 @@ public class MySQL implements IDAO {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public boolean hasNext() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

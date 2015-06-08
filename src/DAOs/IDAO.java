@@ -22,5 +22,4 @@ public interface IDAO {
 	public CEntity read(CEntity entity, String ID) throws SQLException;
 	public CEntity readNext(CEntity entity);
 	public void write(CEntity entity) throws IOException;
-	public boolean hasNext();
 }
